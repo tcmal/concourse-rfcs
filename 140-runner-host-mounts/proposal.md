@@ -26,7 +26,7 @@ Add a new configuration option to the worker command, `--allowed-host-mounts`:
 The value should be a regular expression. Any host path that the expression fully matches will be *allowed* to be
 mounted into a task's container if it is requested.
 
-This option can be specified only once, but can use `|` to match separate paths as required.
+This option can be specified only once, but can use the regex OR operator `|` to match separate paths as required.
 
 ## Task configuration option `host_mounts`
 
