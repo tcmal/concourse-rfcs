@@ -30,7 +30,7 @@ This option can be specified only once, but can use the regex OR operator `|` to
 
 ## Task configuration option `host_mounts`
 
-Add a new configuration key (`host_mounts`) to the `task-config` schema, which can be used to request paths from the host to be
+Add a new configuration key (`host_mounts`) to the schema for `task` steps, which can be used to request paths from the host to be
 mounted into that task's container.
 
 Formally:
@@ -65,7 +65,6 @@ If validation has succeeded, each requested path is mounted into the task's cont
 
  - If the worker is itself running in a docker container, the mount will need to also be specified there. This will need to be made clear to users of the feature
  - Mounting directories from the host opens users up to weird permissions errors, which are often counterintuitive. For instance, group membership is not inherited from the worker user, so if the mounted directory is not world-accessible and its user/group ID doesn't match with what's specified in the container, users will get permission errors.
- - As it stands, no consideration to host mounts is proposed during scheduling. On heterogenous clusters, worker tags can be used for this, but is this good enough?
 
 # Answered Questions
 
