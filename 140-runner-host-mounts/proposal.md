@@ -63,9 +63,6 @@ If validation has succeeded, each requested path is mounted into the task's cont
 
 # Open Questions
 
- - If the worker is itself running in a docker container, the mount will need to also be specified there. This will need to be made clear to users of the feature
- - Mounting directories from the host opens users up to weird permissions errors, which are often counterintuitive. For instance, group membership is not inherited from the worker user, so if the mounted directory is not world-accessible and its user/group ID doesn't match with what's specified in the container, users will get permission errors.
-
 # Answered Questions
 
 # New Implications
@@ -73,3 +70,15 @@ If validation has succeeded, each requested path is mounted into the task's cont
 Adding this feature allows users to run new, increasingly common, types of workloads using Concourse.
 Whilst it could also be used to introduce worker state, which we consider an antipattern, the intended use and limitations
 of this feature should discourage users from doing so unnecessarily.
+
+# Workers in docker
+
+If the worker is itself running in a docker container, the mount will need to also be specified there. This will need to be made clear to users of the feature.
+
+This will need to be made clear in documentation.
+
+# Permissions errors
+
+Mounting directories from the host opens users up to weird permissions errors, which are often counterintuitive. For instance, group membership is not inherited from the worker user, so if the mounted directory is not world-accessible and its user/group ID doesn't match with what's specified in the container, users will get permission errors.
+
+This will need to be made clear in documentation, and should be dealt with by operators.
